@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Productos · Afterglow</title>
+    <meta
+      name="description"
+      content="Todos los productos de Afterglow: ojos, labios y novedades de belleza chrome y cyber."
+    />
+
+    <!-- Modo oscuro: se aplica antes de pintar para evitar parpadeos -->
+    <script>
+      try {
+        if (localStorage.getItem("tema") === "oscuro")
+          document.documentElement.classList.add("dark");
+      } catch (e) {}
+    </script>
+
+    <!-- Tipografías -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Librería extra: AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+    <!-- Tailwind CSS v4 (Play CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      /* dark: se activa con la clase .dark en <html> */
+      @custom-variant dark (&:where(.dark, .dark *));
+
+      /* Sistema de diseño propio (igual que en index.html) */
+      @theme {
+        --color-tinta: #17171c;
+        --color-papel: #f6f6f8;
+        --color-rosa: #f0559f;
+        --color-rosa-claro: #fbd0e4;
+        --color-lila: #a78bfa;
+        --color-lila-claro: #e4dcfd;
+        --color-cielo: #c5e4fa;
+        --color-cielo-claro: #eef7fe;
+        --color-gris: #c9cacf;
+        --color-pulso: #7c3aed;
+
+        --font-titulo: "Bebas Neue", Impact, sans-serif;
+        --font-texto: "Space Mono", ui-monospace, monospace;
+      }
+    </style>
+
+    <!-- CSS propio -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body class="bg-tinta font-texto text-tinta antialiased">
+    <a
+      href="#contenido"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-[60] focus:rounded-full focus:bg-rosa focus:px-4 focus:py-2 focus:text-white"
+    >
+      Saltar al contenido
+    </a>
+
+    <!-- Columna con ancho de móvil -->
+    <div
+      class="relative mx-auto min-h-dvh w-full max-w-[430px] overflow-x-clip bg-papel dark:bg-tinta dark:text-papel"
+    >
+      <!-- ============ CABECERA ============ -->
+      <header
+        class="sticky top-0 z-30 bg-papel/95 backdrop-blur dark:bg-tinta/95"
+      >
+        <!-- Logo: img/logo.svg -->
+        <div class="px-3 pt-4 text-center">
+          <a
+            href="index.html"
+            class="inline-block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pulso"
+          >
+            <img
+              src="img/logo.svg"
+              alt="Afterglow"
+              class="mx-auto h-12 w-auto"
+            />
+          </a>
+        </div>
+
+        <div class="relative flex h-14 items-center justify-between px-3">
+          <button
+            id="btn-menu"
+            type="button"
+            aria-label="Abrir menú"
+            aria-controls="menu-lateral"
+            aria-expanded="false"
+            class="grid size-10 place-items-center rounded-full transition hover:bg-rosa-claro focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulso dark:hover:bg-pulso/40"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              class="size-6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
+
+          <p
+            class="absolute left-1/2 -translate-x-1/2 font-titulo text-2xl tracking-wider"
+          >
+            Productos
+          </p>
+
+          <button
+            id="btn-tema"
+            type="button"
+            aria-label="Cambiar entre modo claro y oscuro"
+            class="grid size-10 place-items-center rounded-full transition hover:bg-rosa-claro focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulso dark:hover:bg-pulso/40"
+          >
+            <svg
+              class="size-5 dark:hidden"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+            </svg>
+            <svg
+              class="hidden size-5 dark:block"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path
+                d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+              />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- ============ MENÚ HAMBURGUESA (drawer) ============ -->
+      <div
+        class="pointer-events-none fixed inset-y-0 left-[max(0px,calc(50vw-215px))] z-50 w-full max-w-[430px] overflow-hidden"
+      >
+        <div
+          id="velo"
+          class="pointer-events-auto absolute inset-0 hidden bg-black/60"
+          aria-hidden="true"
+        ></div>
+        <aside
+          id="menu-lateral"
+          aria-label="Menú"
+          class="pointer-events-auto absolute inset-y-0 left-0 w-64 -translate-x-full bg-tinta p-6 text-papel transition-transform duration-300"
+        >
+          <button
+            id="btn-cerrar"
+            type="button"
+            aria-label="Cerrar menú"
+            class="mb-8 grid size-10 place-items-center rounded-full transition hover:bg-pulso focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rosa"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              class="size-6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </button>
+          <nav aria-label="Principal">
+            <ul class="space-y-5 font-titulo text-3xl tracking-wider">
+              <li>
+                <a
+                  class="block transition hover:translate-x-2 hover:text-rosa focus-visible:text-rosa focus-visible:outline-none"
+                  href="index.html"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  class="block text-rosa transition hover:translate-x-2 focus-visible:outline-none"
+                  href="shop.html"
+                  aria-current="page"
+                  >Shop</a
+                >
+              </li>
+              <li>
+                <a
+                  class="block transition hover:translate-x-2 hover:text-rosa focus-visible:text-rosa focus-visible:outline-none"
+                  href="lookbook.html"
+                  >Lookbook</a
+                >
+              </li>
+              <li>
+                <a
+                  class="block transition hover:translate-x-2 hover:text-rosa focus-visible:text-rosa focus-visible:outline-none"
+                  href="about.html"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  class="block transition hover:translate-x-2 hover:text-rosa focus-visible:text-rosa focus-visible:outline-none"
+                  href="visit-us.html"
+                  >Visit us</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </aside>
+      </div>
+
+      <main id="contenido" class="px-3 pb-10 pt-4">
+        <!-- ============ BUSCADOR ============ -->
+        <form role="search" id="form-buscar" class="mb-4">
+          <label for="buscar" class="sr-only">Buscar productos</label>
+          <div
+            class="flex items-center gap-2 rounded-full border border-tinta/10 bg-white px-4 py-2 transition focus-within:border-pulso focus-within:ring-2 focus-within:ring-pulso/30 dark:border-papel/10 dark:bg-white/5"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              class="size-4 shrink-0 text-tinta/50 dark:text-papel/50"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <circle cx="11" cy="11" r="7" />
+              <path d="M20 20l-3.5-3.5" />
+            </svg>
+            <input
+              id="buscar"
+              type="search"
+              placeholder="Buscar"
+              autocomplete="off"
+              class="w-full bg-transparent text-sm outline-none placeholder:text-tinta/40 dark:placeholder:text-papel/40"
+            />
+          </div>
+        </form>
+
+        <!-- ============ FILTROS ============ -->
+        <div
+          class="mb-5 flex flex-wrap gap-2"
+          role="group"
+          aria-label="Filtrar por categoría"
+        >
+          <button
+            type="button"
+            data-filtro="nuevo"
+            aria-pressed="false"
+            class="chip rounded-full bg-rosa px-5 py-1 text-xs font-bold text-white transition hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulso aria-pressed:ring-2 aria-pressed:ring-tinta dark:aria-pressed:ring-papel"
+          >
+            Nuevo
+          </button>
+          <button
+            type="button"
+            data-filtro="ojos"
+            aria-pressed="false"
+            class="chip rounded-full bg-lila px-5 py-1 text-xs font-bold text-tinta transition hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulso aria-pressed:ring-2 aria-pressed:ring-tinta dark:aria-pressed:ring-papel"
+          >
+            Ojos
+          </button>
+          <button
+            type="button"
+            data-filtro="labios"
+            aria-pressed="false"
+            class="chip rounded-full bg-cielo px-5 py-1 text-xs font-bold text-tinta transition hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulso aria-pressed:ring-2 aria-pressed:ring-tinta dark:aria-pressed:ring-papel"
+          >
+            Labios
+          </button>
+        </div>
+
+        <!-- ============ LISTA DE PRODUCTOS ============ -->
+        <!-- Cada <li> es un producto. Copia uno completo para añadir más.
+           data-categorias: nuevo, ojos y/o labios (separadas por espacios) -->
+        <ul id="lista-productos" class="grid grid-cols-2 gap-3">
+          <li data-categorias="nuevo ojos" data-aos="fade-up">
+            <a
+              href="producto.html"
+              class="group flex h-full flex-col rounded-2xl bg-white p-3 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-[0_8px_0_-2px_var(--color-rosa)] focus-visible:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulso dark:bg-white/5"
+            >
+              <!-- AÑADE AQUÍ la imagen del producto: img/producto-1.png -->
+              <div
+                class="mb-2 aspect-square w-full overflow-hidden rounded-lg bg-gris/40"
+              >
+                <img
+                  src="img/producto-1.png"
+                  alt=""
+                  class="size-full object-contain transition duration-300 group-hover:scale-110"
+                  loading="lazy"
+                />
+              </div>
+              <h2 class="text-xs font-bold">Spectrapen</h2>
+              <p
+                class="mb-2 text-[10px] leading-tight text-tinta/60 dark:text-papel/60"
+              >
+                Delineador líquido de efecto chrome.
+              </p>
+              <p class="mt-auto text-xs font-bold text-rosa">14,99€</p>
+            </a>
+          </li>
+
+          <li
+            data-categorias="nuevo labios"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <a
+              href="producto.html"
+              class="group flex h-full flex-col rounded-2xl bg-white p-3 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-[0_8px_0_-2px_var(--color-rosa)] focus-visible:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulso dark:bg-white/5"
+            >
+              <!-- AÑADE AQUÍ la imagen del producto: img/producto-2.png -->
+              <div
+                class="mb-2 aspect-square w-full overflow-hidden rounded-lg bg-gris/40"
+              >
+                <img
+                  src="img/producto-2.png"
+                  alt=""
+                  class="size-full object-contain transition duration-300 group-hover:scale-110"
+                  loading="lazy"
+                />
+              </div>
+              <h2 class="text-xs font-bold">Freefall Gloss</h2>
+              <p
+                class="mb-2 text-[10px] leading-tight text-tinta/60 dark:text-papel/60"
+              >
+                Gloss de alto brillo con partículas metálicas.
+              </p>
+              <p class="mt-auto text-xs font-bold text-rosa">12,50€</p>
+            </a>
+          </li>
+
+          <li data-categorias="ojos" data-aos="fade-up">
+            <a
+              href="producto.html"
+              class="group flex h-full flex-col rounded-2xl bg-white p-3 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-[0_8px_0_-2px_var(--color-rosa)] focus-visible:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulso dark:bg-white/5"
+            >
+              <!-- AÑADE AQUÍ la imagen del producto: img/producto-3.png -->
+              <div
+                class="mb-2 aspect-square w-full overflow-hidden rounded-lg bg-gris/40"
+              >
+                <img
+                  src="img/producto-3.png"
+                  alt=""
+                  class="size-full object-contain transition duration-300 group-hover:scale-110"
+                  loading="lazy"
+                />
+              </div>
+              <h2 class="text-xs font-bold">Chrome Shadow</h2>
+              <p
+                class="mb-2 text-[10px] leading-tight text-tinta/60 dark:text-papel/60"
+              >
+                Sombra líquida de acabado espejo.
+              </p>
+              <p class="mt-auto text-xs font-bold text-rosa">16,90€</p>
+            </a>
+          </li>
+
+          <li data-categorias="labios" data-aos="fade-up" data-aos-delay="100">
+            <a
+              href="producto.html"
+              class="group flex h-full flex-col rounded-2xl bg-white p-3 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-[0_8px_0_-2px_var(--color-rosa)] focus-visible:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulso dark:bg-white/5"
+            >
+              <!-- AÑADE AQUÍ la imagen del producto: img/producto-4.png -->
+              <div
+                class="mb-2 aspect-square w-full overflow-hidden rounded-lg bg-gris/40"
+              >
+                <img
+                  src="img/producto-4.png"
+                  alt=""
+                  class="size-full object-contain transition duration-300 group-hover:scale-110"
+                  loading="lazy"
+                />
+              </div>
+              <h2 class="text-xs font-bold">Glitch Liner</h2>
+              <p
+                class="mb-2 text-[10px] leading-tight text-tinta/60 dark:text-papel/60"
+              >
+                Perfilador de labios en tono lila.
+              </p>
+              <p class="mt-auto text-xs font-bold text-rosa">9,99€</p>
+            </a>
+          </li>
+
+          <li data-categorias="ojos labios" data-aos="fade-up">
+            <a
+              href="producto.html"
+              class="group flex h-full flex-col rounded-2xl bg-white p-3 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-[0_8px_0_-2px_var(--color-rosa)] focus-visible:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulso dark:bg-white/5"
+            >
+              <!-- AÑADE AQUÍ la imagen del producto: img/producto-5.png -->
+              <div
+                class="mb-2 aspect-square w-full overflow-hidden rounded-lg bg-gris/40"
+              >
+                <img
+                  src="img/producto-5.png"
+                  alt=""
+                  class="size-full object-contain transition duration-300 group-hover:scale-110"
+                  loading="lazy"
+                />
+              </div>
+              <h2 class="text-xs font-bold">Cyber Glitter</h2>
+              <p
+                class="mb-2 text-[10px] leading-tight text-tinta/60 dark:text-papel/60"
+              >
+                Purpurina cosmética multiuso.
+              </p>
+              <p class="mt-auto text-xs font-bold text-rosa">8,50€</p>
+            </a>
+          </li>
+
+          <li data-categorias="nuevo" data-aos="fade-up" data-aos-delay="100">
+            <a
+              href="producto.html"
+              class="group flex h-full flex-col rounded-2xl bg-white p-3 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-[0_8px_0_-2px_var(--color-rosa)] focus-visible:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulso dark:bg-white/5"
+            >
+              <!-- AÑADE AQUÍ la imagen del producto: img/producto-6.png -->
+              <div
+                class="mb-2 aspect-square w-full overflow-hidden rounded-lg bg-gris/40"
+              >
+                <img
+                  src="img/producto-6.png"
+                  alt=""
+                  class="size-full object-contain transition duration-300 group-hover:scale-110"
+                  loading="lazy"
+                />
+              </div>
+              <h2 class="text-xs font-bold">Afterglow Kit</h2>
+              <p
+                class="mb-2 text-[10px] leading-tight text-tinta/60 dark:text-papel/60"
+              >
+                Pack de edición limitada con tres básicos.
+              </p>
+              <p class="mt-auto text-xs font-bold text-rosa">34,00€</p>
+            </a>
+          </li>
+        </ul>
+
+        <p
+          id="sin-resultados"
+          class="mt-8 hidden text-center font-titulo text-2xl tracking-wider"
+          role="status"
+        >
+          No hay productos que coincidan
+        </p>
+      </main>
+
+      <!-- ============ FOOTER ============ -->
+      <footer
+        class="bg-tinta px-3 py-8 text-center text-sm text-papel dark:border-t dark:border-papel/10"
+      >
+        <p class="font-titulo text-3xl tracking-wider">AFTERGLOW</p>
+        <nav aria-label="Pie de página" class="my-4">
+          <ul class="flex flex-wrap justify-center gap-x-5 gap-y-2">
+            <li><a class="enlace-sub" href="shop.html">Shop</a></li>
+            <li><a class="enlace-sub" href="lookbook.html">Lookbook</a></li>
+            <li><a class="enlace-sub" href="about.html">About</a></li>
+            <li><a class="enlace-sub" href="visit-us.html">Visit us</a></li>
+          </ul>
+        </nav>
+        <p class="text-papel/60">&copy; 2026 Afterglow · Práctica 01 UDIT</p>
+      </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 700, once: true });
+    </script>
+    <script src="js/menu.js"></script>
+    <script src="js/shop.js"></script>
+  </body>
+</html>
