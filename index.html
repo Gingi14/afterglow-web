@@ -56,7 +56,9 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
 
-  <body class="bg-tinta font-texto text-tinta antialiased">
+  <body
+    class="bg-tinta font-texto text-tinta antialiased lg:bg-papel dark:lg:bg-tinta"
+  >
     <a
       href="#contenido"
       class="sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-[60] focus:rounded-full focus:bg-rosa focus:px-4 focus:py-2 focus:text-white"
@@ -64,25 +66,25 @@
       Saltar al contenido
     </a>
 
-    <!-- Columna con ancho de móvil: barra lateral + contenido -->
+    <!-- Móvil: columna de 430 px con barra lateral. Escritorio (lg): ancho completo con barra superior -->
     <div
-      class="mx-auto flex w-full max-w-[430px] overflow-x-clip bg-papel dark:bg-tinta dark:text-papel"
+      class="mx-auto flex w-full max-w-[430px] overflow-x-clip bg-papel dark:bg-tinta dark:text-papel lg:max-w-none lg:flex-col"
     >
-      <!-- ============ BARRA LATERAL (solo en la Home) ============ -->
-      <!-- sticky + h-dvh: se queda fija a la izquierda mientras se hace scroll -->
+      <!-- ============ NAVEGACIÓN ============ -->
+      <!-- Móvil: barra lateral fija (sticky + h-dvh). Escritorio: barra horizontal con texto -->
       <nav
         aria-label="Principal"
-        class="sticky top-0 z-30 flex h-dvh w-12 shrink-0 flex-col items-center gap-2 self-start bg-tinta py-4 text-papel dark:border-r dark:border-papel/10"
+        class="sticky top-0 z-30 flex h-dvh w-12 shrink-0 flex-col items-center gap-2 self-start bg-tinta py-4 text-papel lg:h-16 lg:w-full lg:flex-row lg:self-auto lg:px-8 lg:py-0"
       >
         <a
           href="index.html"
           aria-label="Home"
           aria-current="page"
-          class="grid size-10 place-items-center rounded-full text-rosa transition hover:bg-pulso hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rosa"
+          class="grid size-10 place-items-center rounded-full text-rosa transition hover:bg-pulso hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rosa lg:flex lg:size-auto lg:gap-2 lg:px-4 lg:py-2"
         >
           <svg
             viewBox="0 0 24 24"
-            class="size-6"
+            class="size-6 lg:size-5"
             fill="none"
             stroke="currentColor"
             stroke-width="1.8"
@@ -94,15 +96,18 @@
               d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"
             />
           </svg>
+          <span class="hidden font-titulo text-xl tracking-wider lg:inline"
+            >Home</span
+          >
         </a>
         <a
           href="shop.html"
           aria-label="Shop"
-          class="grid size-10 place-items-center rounded-full transition hover:bg-pulso focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rosa"
+          class="grid size-10 place-items-center rounded-full transition hover:bg-pulso focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rosa lg:flex lg:size-auto lg:gap-2 lg:px-4 lg:py-2"
         >
           <svg
             viewBox="0 0 24 24"
-            class="size-6"
+            class="size-6 lg:size-5"
             fill="none"
             stroke="currentColor"
             stroke-width="1.8"
@@ -113,15 +118,18 @@
             <path d="M5 8h14l-1 12H6z" />
             <path d="M9 8V6a3 3 0 0 1 6 0v2" />
           </svg>
+          <span class="hidden font-titulo text-xl tracking-wider lg:inline"
+            >Shop</span
+          >
         </a>
         <a
           href="lookbook.html"
           aria-label="Lookbook"
-          class="grid size-10 place-items-center rounded-full transition hover:bg-pulso focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rosa"
+          class="grid size-10 place-items-center rounded-full transition hover:bg-pulso focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rosa lg:flex lg:size-auto lg:gap-2 lg:px-4 lg:py-2"
         >
           <svg
             viewBox="0 0 24 24"
-            class="size-6"
+            class="size-6 lg:size-5"
             fill="none"
             stroke="currentColor"
             stroke-width="1.8"
@@ -133,11 +141,28 @@
             <circle cx="9" cy="10" r="1.5" />
             <path d="M21 16l-5-5-8 8" />
           </svg>
+          <span class="hidden font-titulo text-xl tracking-wider lg:inline"
+            >Lookbook</span
+          >
+        </a>
+        <a
+          href="about.html"
+          aria-label="About"
+          class="hidden rounded-full transition hover:bg-pulso focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rosa lg:flex lg:gap-2 lg:px-4 lg:py-2"
+        >
+          <span class="font-titulo text-xl tracking-wider">About</span>
+        </a>
+        <a
+          href="visit-us.html"
+          aria-label="Visit us"
+          class="hidden rounded-full transition hover:bg-pulso focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rosa lg:flex lg:gap-2 lg:px-4 lg:py-2"
+        >
+          <span class="font-titulo text-xl tracking-wider">Visit us</span>
         </a>
         <a
           href="shop.html#buscar"
           aria-label="Buscar"
-          class="grid size-10 place-items-center rounded-full transition hover:bg-pulso focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rosa"
+          class="grid size-10 place-items-center rounded-full transition hover:bg-pulso focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rosa lg:ml-auto lg:size-10"
         >
           <svg
             viewBox="0 0 24 24"
@@ -160,7 +185,7 @@
         >
           <svg
             viewBox="0 0 24 24"
-            class="size-6"
+            class="size-6 lg:size-5"
             fill="none"
             stroke="currentColor"
             stroke-width="1.8"
@@ -179,7 +204,7 @@
           id="btn-tema"
           type="button"
           aria-label="Cambiar entre modo claro y oscuro"
-          class="mt-auto grid size-10 place-items-center rounded-full transition hover:bg-pulso focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rosa"
+          class="mt-auto grid size-10 place-items-center rounded-full transition hover:bg-pulso focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rosa lg:mt-0"
         >
           <svg
             class="size-5 dark:hidden"
@@ -210,9 +235,9 @@
       </nav>
 
       <!-- ============ CONTENIDO ============ -->
-      <div class="min-w-0 flex-1">
+      <div class="min-w-0 flex-1 lg:flex-none">
         <!-- Logo: guarda tu archivo como img/logo.svg (o cambia la ruta del src) -->
-        <header class="px-3 pb-3 pt-4 text-center">
+        <header class="px-3 pb-3 pt-4 text-center lg:py-10">
           <a
             href="index.html"
             class="inline-block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pulso"
@@ -220,22 +245,29 @@
             <img
               src="img/logo.svg"
               alt="Afterglow"
-              class="mx-auto h-12 w-auto"
+              class="mx-auto h-12 w-auto dark:invert lg:h-20"
             />
           </a>
         </header>
 
-        <main id="contenido">
+        <!-- En móvil el orden es: portada, franja, new in, best seller.
+           En escritorio se reordena con lg:order-* -->
+        <main id="contenido" class="flex flex-col lg:mx-auto lg:max-w-7xl">
           <!-- ============ PORTADA: 4 imágenes ============ -->
-          <section aria-labelledby="titulo-portada">
+          <section
+            aria-labelledby="titulo-portada"
+            class="order-1 lg:order-3 lg:px-8 lg:pt-10"
+          >
             <h1 id="titulo-portada" class="sr-only">
               Afterglow, high-shine chrome and cyber beauty archive
             </h1>
 
-            <div class="flex flex-col items-center">
+            <div
+              class="flex flex-col items-center lg:grid lg:grid-cols-4 lg:gap-4"
+            >
               <!-- AÑADE AQUÍ tus imágenes: img/portada-1.jpg ... img/portada-4.jpg -->
               <figure
-                class="w-[48%] overflow-hidden bg-lila-claro"
+                class="w-[48%] overflow-hidden bg-lila-claro lg:w-full"
                 data-aos="fade-up"
               >
                 <img
@@ -248,16 +280,18 @@
               <figure
                 class="w-full overflow-hidden bg-rosa-claro"
                 data-aos="fade-up"
+                data-aos-delay="100"
               >
                 <img
                   src="img/portada-2.jpg"
                   alt="Primer plano de ojo con sombra oscura"
-                  class="aspect-[16/9] w-full object-cover"
+                  class="aspect-[16/9] w-full object-cover lg:aspect-[3/4]"
                 />
               </figure>
               <figure
-                class="w-[56%] overflow-hidden bg-cielo"
+                class="w-[56%] overflow-hidden bg-cielo lg:w-full"
                 data-aos="fade-up"
+                data-aos-delay="200"
               >
                 <img
                   src="img/portada-3.jpg"
@@ -268,23 +302,25 @@
               <figure
                 class="w-full overflow-hidden bg-lila-claro"
                 data-aos="fade-up"
+                data-aos-delay="300"
               >
                 <img
                   src="img/portada-4.jpg"
                   alt="Delineado artístico con detalles dibujados"
-                  class="aspect-[16/9] w-full object-cover"
+                  class="aspect-[16/9] w-full object-cover lg:aspect-[3/4]"
                 />
               </figure>
             </div>
           </section>
 
-          <!-- Franja negra con el lema -->
+          <!-- ============ FRANJA NEGRA (móvil) / BANNER EDITORIAL (escritorio) ============ -->
           <div
-            class="mt-8 overflow-hidden bg-black py-3 text-papel"
-            aria-hidden="true"
+            class="order-2 mt-8 overflow-hidden bg-black text-papel lg:relative lg:order-1 lg:mx-8 lg:mt-0 lg:h-[26rem]"
           >
+            <!-- Móvil: lema en marquee -->
             <div
-              class="marquee flex w-max gap-8 whitespace-nowrap font-titulo text-xl tracking-wider"
+              class="marquee flex w-max gap-8 whitespace-nowrap py-3 font-titulo text-xl tracking-wider lg:hidden"
+              aria-hidden="true"
             >
               <span
                 >AFTERGLOW® // HIGH-SHINE CHROME &amp; CYBER BEAUTY
@@ -295,32 +331,78 @@
                 ARCHIVE.</span
               >
             </div>
+
+            <!-- Escritorio: banner con imagen de fondo -->
+            <div class="hidden h-full lg:block">
+              <!-- AÑADE AQUÍ la imagen del banner: img/hero.jpg (horizontal, mejor 1600x600) -->
+              <img
+                src="img/hero.jpg"
+                alt=""
+                class="absolute inset-0 size-full object-cover opacity-80"
+              />
+              <div class="relative grid h-full content-between p-10">
+                <div class="max-w-sm">
+                  <p class="mb-3 text-xs font-bold tracking-widest text-rosa">
+                    LO ÚLTIMO EN CYBER BEAUTY
+                  </p>
+                  <h2 class="font-titulo text-4xl leading-tight tracking-wide">
+                    AFTERGLOW® // HIGH-SHINE CHROME &amp; CYBER BEAUTY ARCHIVE.
+                  </h2>
+                </div>
+                <p
+                  class="justify-self-end font-titulo text-[9rem] leading-none tracking-wide"
+                  aria-hidden="true"
+                >
+                  Y3K
+                </p>
+              </div>
+            </div>
           </div>
+
+          <!-- ============ TEXTO EDITORIAL (solo escritorio) ============ -->
+          <section
+            aria-labelledby="titulo-intro"
+            class="hidden px-8 py-12 lg:order-2 lg:block"
+          >
+            <h2 id="titulo-intro" class="sr-only">Sobre Afterglow</h2>
+            <p
+              class="mx-auto max-w-5xl columns-2 gap-10 text-justify text-xs leading-relaxed"
+            >
+              Nacidxs en la intersección entre la subcultura digital, el diseño
+              editorial de vanguardia y la cosmética de alta precisión,
+              AFTERGLOW® nace con un fin: el minimalismo comercial para crear
+              herramientas de autoexpresión sin reglas. Formulación de alto
+              pigmento, texturas híbridas y acabados iridiscentes concebidos
+              para romper los estándares tradicionales de la belleza. Desde
+              nuestro laboratorio creativo en Madrid, cada pieza se diseña para
+              brillar con luz propia.
+            </p>
+          </section>
 
           <!-- ============ NEW IN ============ -->
           <section
             id="novedades"
             aria-labelledby="titulo-new"
-            class="px-3 pt-8"
+            class="order-3 px-3 pt-8 lg:order-4 lg:px-8 lg:pt-12"
           >
             <h2
               id="titulo-new"
-              class="mb-3 font-titulo text-3xl tracking-wider"
+              class="mb-3 font-titulo text-3xl tracking-wider lg:mb-5 lg:text-4xl"
             >
               New in
             </h2>
 
-            <ul class="grid grid-cols-2 gap-3">
+            <ul class="grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4">
               <li data-aos="zoom-in">
                 <a
                   href="producto.html"
-                  class="group relative flex min-h-64 flex-col items-center justify-end gap-2 overflow-hidden rounded-t-[2rem] rounded-b-[2.75rem] bg-gradient-to-b from-rosa to-rosa-claro p-3 transition duration-300 hover:-translate-y-1.5 hover:-rotate-1 hover:shadow-[0_12px_0_-4px_var(--color-pulso)] focus-visible:-translate-y-1.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulso"
+                  class="group relative flex min-h-64 flex-col items-center justify-end gap-2 overflow-hidden rounded-t-[2rem] rounded-b-[2.75rem] bg-gradient-to-b from-rosa to-rosa-claro p-3 transition duration-300 hover:-translate-y-1.5 hover:-rotate-1 hover:shadow-[0_12px_0_-4px_var(--color-pulso)] focus-visible:-translate-y-1.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulso lg:min-h-80"
                 >
                   <!-- AÑADE AQUÍ la imagen del producto -->
                   <img
                     src="img/spectrapen-rosa.png"
                     alt=""
-                    class="absolute left-1/2 top-3 h-40 w-auto -translate-x-1/2 transition duration-300 group-hover:scale-110 group-hover:rotate-3"
+                    class="absolute left-1/2 top-3 h-40 w-auto -translate-x-1/2 transition duration-300 group-hover:scale-110 group-hover:rotate-3 lg:h-52"
                     loading="lazy"
                   />
                   <span
@@ -336,13 +418,66 @@
               <li data-aos="zoom-in" data-aos-delay="100">
                 <a
                   href="producto.html"
-                  class="group relative flex min-h-64 flex-col items-center justify-end gap-2 overflow-hidden rounded-t-[2rem] rounded-b-[2.75rem] bg-gradient-to-b from-lila to-lila-claro p-3 transition duration-300 hover:-translate-y-1.5 hover:-rotate-1 hover:shadow-[0_12px_0_-4px_var(--color-pulso)] focus-visible:-translate-y-1.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulso"
+                  class="group relative flex min-h-64 flex-col items-center justify-end gap-2 overflow-hidden rounded-t-[2rem] rounded-b-[2.75rem] bg-gradient-to-b from-lila to-lila-claro p-3 transition duration-300 hover:-translate-y-1.5 hover:-rotate-1 hover:shadow-[0_12px_0_-4px_var(--color-pulso)] focus-visible:-translate-y-1.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulso lg:min-h-80"
                 >
                   <!-- AÑADE AQUÍ la imagen del producto -->
                   <img
                     src="img/spectrapen-lila.png"
                     alt=""
-                    class="absolute left-1/2 top-3 h-40 w-auto -translate-x-1/2 transition duration-300 group-hover:scale-110 group-hover:rotate-3"
+                    class="absolute left-1/2 top-3 h-40 w-auto -translate-x-1/2 transition duration-300 group-hover:scale-110 group-hover:rotate-3 lg:h-52"
+                    loading="lazy"
+                  />
+                  <span
+                    class="relative font-titulo text-xl tracking-wide text-tinta"
+                    >Spectrapen</span
+                  >
+                  <span
+                    class="relative rounded-full bg-white px-5 py-1 text-xs font-bold text-tinta"
+                    >14,99€</span
+                  >
+                </a>
+              </li>
+              <!-- Solo escritorio: dos tarjetas más para llenar la fila -->
+              <li
+                class="hidden lg:block"
+                data-aos="zoom-in"
+                data-aos-delay="200"
+              >
+                <a
+                  href="producto.html"
+                  class="group relative flex min-h-64 flex-col items-center justify-end gap-2 overflow-hidden rounded-t-[2rem] rounded-b-[2.75rem] bg-gradient-to-b from-cielo to-cielo-claro p-3 transition duration-300 hover:-translate-y-1.5 hover:-rotate-1 hover:shadow-[0_12px_0_-4px_var(--color-pulso)] focus-visible:-translate-y-1.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulso lg:min-h-80"
+                >
+                  <!-- AÑADE AQUÍ la imagen del producto -->
+                  <img
+                    src="img/spectrapen-azul.png"
+                    alt=""
+                    class="absolute left-1/2 top-3 h-40 w-auto -translate-x-1/2 transition duration-300 group-hover:scale-110 group-hover:rotate-3 lg:h-52"
+                    loading="lazy"
+                  />
+                  <span
+                    class="relative font-titulo text-xl tracking-wide text-tinta"
+                    >Spectrapen</span
+                  >
+                  <span
+                    class="relative rounded-full bg-white px-5 py-1 text-xs font-bold text-tinta"
+                    >14,99€</span
+                  >
+                </a>
+              </li>
+              <li
+                class="hidden lg:block"
+                data-aos="zoom-in"
+                data-aos-delay="300"
+              >
+                <a
+                  href="producto.html"
+                  class="group relative flex min-h-64 flex-col items-center justify-end gap-2 overflow-hidden rounded-t-[2rem] rounded-b-[2.75rem] bg-gradient-to-b from-rosa to-rosa-claro p-3 transition duration-300 hover:-translate-y-1.5 hover:-rotate-1 hover:shadow-[0_12px_0_-4px_var(--color-pulso)] focus-visible:-translate-y-1.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulso lg:min-h-80"
+                >
+                  <!-- AÑADE AQUÍ la imagen del producto -->
+                  <img
+                    src="img/spectrapen-rosa.png"
+                    alt=""
+                    class="absolute left-1/2 top-3 h-40 w-auto -translate-x-1/2 transition duration-300 group-hover:scale-110 group-hover:rotate-3 lg:h-52"
                     loading="lazy"
                   />
                   <span
@@ -358,30 +493,48 @@
             </ul>
           </section>
 
+          <!-- ============ CITA (solo escritorio) ============ -->
+          <section
+            aria-labelledby="titulo-cita"
+            class="mt-12 hidden border-y border-tinta/10 px-8 py-14 text-center dark:border-papel/10 lg:order-5 lg:block"
+          >
+            <h2 id="titulo-cita" class="sr-only">Cita</h2>
+            <blockquote
+              class="mx-auto max-w-3xl font-titulo text-4xl leading-tight tracking-wide"
+              data-aos="fade-up"
+            >
+              “Lo futurista se aleja de lo suave: líneas afiladas, alto reflejo
+              y nada de materiales naturales.”
+            </blockquote>
+            <p class="mt-4 text-xs font-bold uppercase tracking-widest">
+              Afterglow creative directory: basics
+            </p>
+          </section>
+
           <!-- ============ BEST SELLER ============ -->
           <section
             id="bestseller"
             aria-labelledby="titulo-best"
-            class="px-3 pb-10 pt-8"
+            class="order-4 px-3 pb-10 pt-8 lg:order-6 lg:px-8 lg:pb-16 lg:pt-12"
           >
             <h2
               id="titulo-best"
-              class="mb-3 font-titulo text-3xl tracking-wider"
+              class="mb-3 font-titulo text-3xl tracking-wider lg:mb-5 lg:text-4xl"
             >
               Best seller
             </h2>
 
-            <ul class="grid grid-cols-2 gap-3">
-              <li class="col-span-2" data-aos="fade-up">
+            <ul class="grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4">
+              <li class="col-span-2 lg:col-span-1" data-aos="fade-up">
                 <a
                   href="producto.html"
-                  class="group relative flex min-h-48 flex-col items-center justify-end gap-2 overflow-hidden rounded-t-[2rem] rounded-b-[2.75rem] bg-gradient-to-b from-cielo to-cielo-claro p-3 transition duration-300 hover:-translate-y-1.5 hover:-rotate-1 hover:shadow-[0_12px_0_-4px_var(--color-pulso)] focus-visible:-translate-y-1.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulso"
+                  class="group relative flex min-h-48 flex-col items-center justify-end gap-2 overflow-hidden rounded-t-[2rem] rounded-b-[2.75rem] bg-gradient-to-b from-cielo to-cielo-claro p-3 transition duration-300 hover:-translate-y-1.5 hover:-rotate-1 hover:shadow-[0_12px_0_-4px_var(--color-pulso)] focus-visible:-translate-y-1.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulso lg:min-h-80"
                 >
                   <!-- AÑADE AQUÍ la imagen del producto -->
                   <img
                     src="img/spectrapen-azul.png"
                     alt=""
-                    class="absolute left-1/2 top-3 h-32 w-auto -translate-x-1/2 transition duration-300 group-hover:scale-110 group-hover:rotate-3"
+                    class="absolute left-1/2 top-3 h-32 w-auto -translate-x-1/2 transition duration-300 group-hover:scale-110 group-hover:rotate-3 lg:h-52"
                     loading="lazy"
                   />
                   <span
@@ -397,13 +550,13 @@
               <li data-aos="zoom-in">
                 <a
                   href="producto.html"
-                  class="group relative flex min-h-64 flex-col items-center justify-end gap-2 overflow-hidden rounded-t-[2rem] rounded-b-[2.75rem] bg-gradient-to-b from-rosa to-rosa-claro p-3 transition duration-300 hover:-translate-y-1.5 hover:-rotate-1 hover:shadow-[0_12px_0_-4px_var(--color-pulso)] focus-visible:-translate-y-1.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulso"
+                  class="group relative flex min-h-64 flex-col items-center justify-end gap-2 overflow-hidden rounded-t-[2rem] rounded-b-[2.75rem] bg-gradient-to-b from-rosa to-rosa-claro p-3 transition duration-300 hover:-translate-y-1.5 hover:-rotate-1 hover:shadow-[0_12px_0_-4px_var(--color-pulso)] focus-visible:-translate-y-1.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulso lg:min-h-80"
                 >
                   <!-- AÑADE AQUÍ la imagen del producto -->
                   <img
                     src="img/spectrapen-rosa.png"
                     alt=""
-                    class="absolute left-1/2 top-3 h-40 w-auto -translate-x-1/2 transition duration-300 group-hover:scale-110 group-hover:rotate-3"
+                    class="absolute left-1/2 top-3 h-40 w-auto -translate-x-1/2 transition duration-300 group-hover:scale-110 group-hover:rotate-3 lg:h-52"
                     loading="lazy"
                   />
                   <span
@@ -419,13 +572,13 @@
               <li data-aos="zoom-in" data-aos-delay="100">
                 <a
                   href="producto.html"
-                  class="group relative flex min-h-64 flex-col items-center justify-end gap-2 overflow-hidden rounded-t-[2rem] rounded-b-[2.75rem] bg-gradient-to-b from-lila to-lila-claro p-3 transition duration-300 hover:-translate-y-1.5 hover:-rotate-1 hover:shadow-[0_12px_0_-4px_var(--color-pulso)] focus-visible:-translate-y-1.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulso"
+                  class="group relative flex min-h-64 flex-col items-center justify-end gap-2 overflow-hidden rounded-t-[2rem] rounded-b-[2.75rem] bg-gradient-to-b from-lila to-lila-claro p-3 transition duration-300 hover:-translate-y-1.5 hover:-rotate-1 hover:shadow-[0_12px_0_-4px_var(--color-pulso)] focus-visible:-translate-y-1.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulso lg:min-h-80"
                 >
                   <!-- AÑADE AQUÍ la imagen del producto -->
                   <img
                     src="img/spectrapen-lila.png"
                     alt=""
-                    class="absolute left-1/2 top-3 h-40 w-auto -translate-x-1/2 transition duration-300 group-hover:scale-110 group-hover:rotate-3"
+                    class="absolute left-1/2 top-3 h-40 w-auto -translate-x-1/2 transition duration-300 group-hover:scale-110 group-hover:rotate-3 lg:h-52"
                     loading="lazy"
                   />
                   <span
@@ -438,16 +591,16 @@
                   >
                 </a>
               </li>
-              <li class="col-span-2" data-aos="fade-up">
+              <li class="col-span-2 lg:col-span-1" data-aos="fade-up">
                 <a
                   href="producto.html"
-                  class="group relative flex min-h-48 flex-col items-center justify-end gap-2 overflow-hidden rounded-t-[2rem] rounded-b-[2.75rem] bg-gradient-to-b from-cielo to-cielo-claro p-3 transition duration-300 hover:-translate-y-1.5 hover:-rotate-1 hover:shadow-[0_12px_0_-4px_var(--color-pulso)] focus-visible:-translate-y-1.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulso"
+                  class="group relative flex min-h-48 flex-col items-center justify-end gap-2 overflow-hidden rounded-t-[2rem] rounded-b-[2.75rem] bg-gradient-to-b from-cielo to-cielo-claro p-3 transition duration-300 hover:-translate-y-1.5 hover:-rotate-1 hover:shadow-[0_12px_0_-4px_var(--color-pulso)] focus-visible:-translate-y-1.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulso lg:min-h-80"
                 >
                   <!-- AÑADE AQUÍ la imagen del producto -->
                   <img
                     src="img/spectrapen-azul.png"
                     alt=""
-                    class="absolute left-1/2 top-3 h-32 w-auto -translate-x-1/2 transition duration-300 group-hover:scale-110 group-hover:rotate-3"
+                    class="absolute left-1/2 top-3 h-32 w-auto -translate-x-1/2 transition duration-300 group-hover:scale-110 group-hover:rotate-3 lg:h-52"
                     loading="lazy"
                   />
                   <span
@@ -466,18 +619,24 @@
 
         <!-- ============ FOOTER ============ -->
         <footer
-          class="bg-tinta px-3 py-8 text-center text-sm text-papel dark:border-t dark:border-papel/10"
+          class="bg-tinta px-3 py-8 text-center text-sm text-papel dark:border-t dark:border-papel/10 lg:px-8"
         >
-          <p class="font-titulo text-3xl tracking-wider">AFTERGLOW</p>
-          <nav aria-label="Pie de página" class="my-4">
-            <ul class="flex flex-wrap justify-center gap-x-5 gap-y-2">
-              <li><a class="enlace-sub" href="shop.html">Shop</a></li>
-              <li><a class="enlace-sub" href="lookbook.html">Lookbook</a></li>
-              <li><a class="enlace-sub" href="about.html">About</a></li>
-              <li><a class="enlace-sub" href="visit-us.html">Visit us</a></li>
-            </ul>
-          </nav>
-          <p class="text-papel/60">&copy; 2026 Afterglow · Práctica 01 UDIT</p>
+          <div
+            class="lg:mx-auto lg:flex lg:max-w-7xl lg:items-center lg:justify-between lg:text-left"
+          >
+            <p class="font-titulo text-3xl tracking-wider">AFTERGLOW</p>
+            <nav aria-label="Pie de página" class="my-4 lg:my-0">
+              <ul class="flex flex-wrap justify-center gap-x-5 gap-y-2">
+                <li><a class="enlace-sub" href="shop.html">Shop</a></li>
+                <li><a class="enlace-sub" href="lookbook.html">Lookbook</a></li>
+                <li><a class="enlace-sub" href="about.html">About</a></li>
+                <li><a class="enlace-sub" href="visit-us.html">Visit us</a></li>
+              </ul>
+            </nav>
+            <p class="text-papel/60">
+              &copy; 2026 Afterglow · Práctica 01 UDIT
+            </p>
+          </div>
         </footer>
       </div>
     </div>
